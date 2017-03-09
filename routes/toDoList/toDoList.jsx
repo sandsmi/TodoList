@@ -27,10 +27,12 @@ class ToDoList extends React.Component {
   }
 
   deleteElement(index) {
-    this.setState({
-      toDos: this.state.toDos.filter(function (e, i) {
+    const todos = this.state.toDos.filter(function (e, i) {
         return i !== index;
-      })
+      });
+
+    this.setState({
+      toDos: todos, visible: todos
     });
   }
 
@@ -46,6 +48,7 @@ class ToDoList extends React.Component {
         <div className="sidebar">
           <p>Add TODO</p>
           <p onClick={this.toggleVisible}>Hide Done</p>
+          <p onClick={this.sortByName}>SORT BY NAME</p>
         </div>
         <div className="todo-list">
           <ul>
