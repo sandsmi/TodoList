@@ -69,8 +69,8 @@ class TodoList extends React.Component {
               this.state.visible.map((item, index) =>
                 <li key={index}>
                   <span>{item.Task}</span>
+                  <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
                   <input name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
-                  <button onClick={this.deleteElement.bind(this, index)}>delete</button>
                 </li>
               )
             }

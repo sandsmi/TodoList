@@ -18,6 +18,9 @@
     border: 2px solid #00CCCC;
 }
 
+.delete-btn {
+}
+
 .todo-list {
     display: inline-block;
     width: 400px;
@@ -31,4 +34,11 @@
 
 ul {
     list-style-type: none;
+}
+
+li {
+    background-color: white;
+    border: 1px solid #F2F2F2;
+    margin: 10px;
+    padding: 5px;
 }
