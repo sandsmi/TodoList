@@ -103,6 +103,7 @@ class TodoList extends React.Component {
                     text={item.Task}
                     paramName="Task"
                     change={this.handleChange}
+                    className={item.Done ? "faded" : ""}
                     />
                   <div className="pull-right">
                     <input id={index} name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>

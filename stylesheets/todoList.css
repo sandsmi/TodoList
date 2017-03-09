@@ -15,6 +15,10 @@ li {
     margin: 10px;
 }
 
+.list-container p {
+    margin-left: 10px;
+}
+
 .checkbox-round {
     width: 1.3em;
     height: 1.3em;
@@ -70,7 +74,6 @@ li {
 
 .faded {
     opacity: 0.5;
-    margin-left: 10px;
 }
 
 .todo-modal {
