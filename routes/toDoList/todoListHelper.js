@@ -30,11 +30,9 @@ export class TodoListHelper {
     }
 
     sortByStatus(todos) {
-        console.log(todos);
         todos.sort(function (a, b) {
             return b.Done - a.Done;
         });
-        console.log(todos);
         return todos;
     }
 }
