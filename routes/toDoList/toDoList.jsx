@@ -23,9 +23,8 @@ class TodoList extends React.Component {
     const target = event.target;
     const property = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    this.setState({
-      todos: update(this.state.todos, { 1: { [property]: { $set: value } } })
-    });
+    var newState = update(this.state.todos, { [target.id]: { [property]: { $set: value } } });
+    this.setState({ todos: newState, visible: newState });
   }
 
   deleteElement(index) {
@@ -58,8 +57,8 @@ class TodoList extends React.Component {
     return (
       <div>
         <div className="sidebar">
-          <p>Add TODO</p>
-          <p onClick={this.toggleVisible}>Hide Done</p>
+          <p>ADD TODO</p>
+          <p onClick={this.toggleVisible}>HIDE DONE</p>
           <p onClick={this.sortByName}>SORT BY NAME</p>
           <p onClick={this.sortByStatus}>SORT BY STATUS</p>
         </div>
@@ -69,8 +68,8 @@ class TodoList extends React.Component {
               this.state.visible.map((item, index) =>
                 <li key={index}>
                   <span>{item.Task}</span>
-                  <input name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
-                  <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
+                  <input id={item.Id - 1} name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
+                  <button id={item.Id - 1} className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
                 </li>
               )
             }
