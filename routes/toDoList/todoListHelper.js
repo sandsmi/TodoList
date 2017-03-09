@@ -1,10 +1,10 @@
 export class TodoListHelper {
     constructor() {
         this.initialTodos = [
-            { Id: 1, Task: "Write code", Done: true },
-            { Id: 2, Task: "Write tests", Done: false },
-            { Id: 3, Task: "Run unit testing", Done: true },
-            { Id: 4, Task: "Deploy to production", Done: false }
+            { Task: "Write code", Done: true },
+            { Task: "Write tests", Done: false },
+            { Task: "Run unit testing", Done: true },
+            { Task: "Deploy to production", Done: false }
         ]
     }
 

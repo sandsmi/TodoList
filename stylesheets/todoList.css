@@ -72,3 +72,7 @@ li {
     opacity: 0.5;
     margin-left: 10px;
 }
+
+.todo-modal {
+    width:300px;
+}

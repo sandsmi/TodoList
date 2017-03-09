@@ -1,5 +1,6 @@
 import React from 'react';
 import { TodoListHelper } from './todoListHelper';
+import { AddTodoModal } from './addTodoModal';
 import InlineEdit from 'react-edit-inline';
 import FaTrash from 'react-icons/lib/fa/trash';
 var update = require('react-addons-update');
@@ -8,11 +9,14 @@ class TodoList extends React.Component {
 
   constructor() {
     super();
-    this.state = { todos: [], visible: [], showDone: true, asc: true };
+    this.state = { todos: [], visible: [], showDone: true, asc: true, modalIsOpen: false };
     this.handleChange = this.handleChange.bind(this);
     this.toggleVisible = this.toggleVisible.bind(this);
     this.sortByName = this.sortByName.bind(this);
     this.sortByStatus = this.sortByStatus.bind(this);
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    this.addElement = this.addElement.bind(this);
     this.todoListHelper = new TodoListHelper();
   }
 
@@ -25,8 +29,26 @@ class TodoList extends React.Component {
     const target = event.target;
     const property = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
-    var newState = update(this.state.todos, { [target.id]: { [property]: { $set: value } } });
+    let newState = update(this.state.todos, { [target.id]: { [property]: { $set: value } } });
     this.setState({ todos: newState, visible: newState });
+  }
+
+  addElement() {
+    let taskName = document.getElementById('newTask').value;
+    let newTask = {
+      Task: taskName,
+      Done: false
+    }
+    let newList = this.state.todos.concat([newTask]);
+    this.setState({ modalIsOpen: false, todos: newList, visible: newList });
+  }
+
+  openModal() {
+    this.setState({ modalIsOpen: true });
+  }
+
+  closeModal() {
+    this.setState({ modalIsOpen: false });
   }
 
   deleteElement(index) {
@@ -60,7 +82,7 @@ class TodoList extends React.Component {
       <div className="list-container">
         <div className="sidebar">
           <div className="sidebar-item">
-            <span className="sidebar-option">ADD TODO</span>
+            <span className="sidebar-option" onClick={this.openModal}>ADD TODO</span>
           </div>
           <div className="sidebar-item">
             <span className="sidebar-option" onClick={this.toggleVisible}>HIDE DONE</span>
@@ -91,6 +113,7 @@ class TodoList extends React.Component {
             }
           </ul>
           <p className="faded">Click a TODO to edit it</p>
+          <AddTodoModal className="todo-modal" onClose={this.closeModal} onAdd={this.addElement} showModal={this.state.modalIsOpen} />
         </div>
       </div>
     );
