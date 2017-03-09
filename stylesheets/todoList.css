@@ -1,0 +1,34 @@
+.checkbox-round {
+    width: 1.3em;
+    height: 1.3em;
+    background-color: white;
+    border-radius: 50%;
+    vertical-align: middle;
+    border: 2px solid gray;
+    -webkit-appearance: none;
+    outline: white;
+    cursor: pointer;
+}
+
+.checkbox-round:checked {
+    -webkit-box-shadow:inset 0px 0px 0px 2px white;
+    -moz-box-shadow:inset 0px 0px 0px 2px white;
+    box-shadow:inset 0px 0px 0px 2px white;
+    background-color: #00CCCC;
+    border: 2px solid #00CCCC;
+}
+
+.todo-list {
+    display: inline-block;
+    width: 400px;
+    background-color: #F9F9F9;
+}
+
+.sidebar {
+    display: inline-block;
+    width: 200px;
+}
+
+ul {
+    list-style-type: none;
+}
