@@ -1,3 +1,15 @@
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: white;
+    border: 1px solid #F2F2F2;
+    margin: 5px;
+    padding: 5px;
+}
+
 .checkbox-round {
     width: 1.3em;
     height: 1.3em;
@@ -30,7 +42,9 @@
 
 .sidebar {
     display: inline-block;
+    vertical-align: top;
     width: 150px;
+    height: 100%;
 }
 
 .sidebar-item {
@@ -41,14 +55,6 @@
     cursor: pointer;
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background-color: white;
-    border: 1px solid #F2F2F2;
-    margin: 5px;
-    padding: 5px;
+.pull-right {
+    float: right;
 }

@@ -81,8 +81,10 @@ class TodoList extends React.Component {
                     paramName="Task"
                     change={this.handleChange}
                     />
-                  <input id={index} name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
-                  <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
+                  <div className="pull-right">
+                    <input id={index} name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
+                    <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
+                  </div>
                 </li>
               )
             }
