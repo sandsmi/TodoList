@@ -11,9 +11,9 @@
 }
 
 .checkbox-round:checked {
-    -webkit-box-shadow:inset 0px 0px 0px 2px white;
-    -moz-box-shadow:inset 0px 0px 0px 2px white;
-    box-shadow:inset 0px 0px 0px 2px white;
+    -webkit-box-shadow: inset 0px 0px 0px 2px white;
+    -moz-box-shadow: inset 0px 0px 0px 2px white;
+    box-shadow: inset 0px 0px 0px 2px white;
     background-color: #00CCCC;
     border: 2px solid #00CCCC;
 }
@@ -33,8 +33,17 @@
     width: 150px;
 }
 
+.sidebar-item {
+    margin: 5px;
+}
+
+.sidebar-option {
+    cursor: pointer;
+}
+
 ul {
     list-style-type: none;
+    padding: 0;
 }
 
 li {

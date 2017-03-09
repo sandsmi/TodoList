@@ -21,19 +21,19 @@ export class TodoListHelper {
         }
     }
 
-    sortByName(todos) {
+    sortByName(todos, asc) {
         todos.sort(function (a, b) {
-            if (a.Task < b.Task) return -1;
-            if (a.Task > b.Task) return 1;
+            if (a.Task < b.Task) return asc == true ? -1 : 1;
+            if (a.Task > b.Task) return asc == true ? 1 : -1;
             return 0;
         });
-        return todos;
+        return { visible: todos, asc: -asc };
     }
 
-    sortByStatus(todos) {
+    sortByStatus(todos, asc) {
         todos.sort(function (a, b) {
-            return b.Done - a.Done;
+            return asc == true ? (b.Done - a.Done) : (a.Done - b.Done);
         });
-        return todos;
+        return { visible: todos, asc: -asc };
     }
 }

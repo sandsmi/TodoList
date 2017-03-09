@@ -1,12 +1,13 @@
 import React from 'react';
 import { TodoListHelper } from './todoListHelper';
+import InlineEdit from 'react-edit-inline';
 var update = require('react-addons-update');
 
 class TodoList extends React.Component {
 
   constructor() {
     super();
-    this.state = { todos: [], visible: [], showDone: true };
+    this.state = { todos: [], visible: [], showDone: true, asc: true };
     this.handleChange = this.handleChange.bind(this);
     this.toggleVisible = this.toggleVisible.bind(this);
     this.sortByName = this.sortByName.bind(this);
@@ -16,7 +17,7 @@ class TodoList extends React.Component {
 
   componentDidMount() {
     let initialTodos = this.todoListHelper.getInitialTodos();
-    this.setState({ todos: initialTodos, visible: initialTodos, showDone: true });
+    this.setState({ todos: initialTodos, visible: initialTodos });
   }
 
   handleChange(event) {
@@ -29,8 +30,8 @@ class TodoList extends React.Component {
 
   deleteElement(index) {
     const todos = this.state.todos.filter(function (e, i) {
-        return i !== index;
-      });
+      return i !== index;
+    });
 
     this.setState({
       todos: todos, visible: todos
@@ -44,36 +45,49 @@ class TodoList extends React.Component {
   }
 
   sortByName() {
-    let sortedTodos = this.todoListHelper.sortByName(this.state.todos);
-    this.setState({ visible: sortedTodos });
+    let newState = this.todoListHelper.sortByName(this.state.todos, this.state.asc);
+    this.setState(newState);
   }
 
   sortByStatus() {
-    let sortedTodos = this.todoListHelper.sortByStatus(this.state.todos);
-    this.setState({ visible: sortedTodos });
+    let newState = this.todoListHelper.sortByStatus(this.state.todos, this.state.asc);
+    this.setState(newState);
   }
 
   render() {
     return (
       <div>
         <div className="sidebar">
-          <p>ADD TODO</p>
-          <p onClick={this.toggleVisible}>HIDE DONE</p>
-          <p onClick={this.sortByName}>SORT BY NAME</p>
-          <p onClick={this.sortByStatus}>SORT BY STATUS</p>
+          <div className="sidebar-item">
+            <span className="sidebar-option">ADD TODO</span>
+          </div>
+          <div className="sidebar-item">
+            <span className="sidebar-option" onClick={this.toggleVisible}>HIDE DONE</span>
+          </div>
+          <div className="sidebar-item">
+            <span className="sidebar-option" onClick={this.sortByName}>SORT BY NAME</span>
+          </div>
+          <div className="sidebar-item">
+            <span className="sidebar-option" onClick={this.sortByStatus}>SORT BY STATUS</span>
+          </div>
         </div>
         <div className="todo-list">
           <ul>
             {
               this.state.visible.map((item, index) =>
                 <li key={index}>
-                  <span>{item.Task}</span>
+                  <InlineEdit
+                    text={item.Task}
+                    paramName="Task"
+                    change={this.handleChange}
+                    />
                   <input id={index} name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
                   <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
                 </li>
               )
             }
           </ul>
+          <p>Click a TODO to edit it</p>
         </div>
       </div>
     );
