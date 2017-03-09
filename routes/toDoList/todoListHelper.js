@@ -1,14 +1,14 @@
 export class TodoListHelper {
     constructor() {
-        this.initialToDos = [
+        this.initialTodos = [
             { Id: 1, Task: "Write code", Done: true },
             { Id: 2, Task: "Write tests", Done: false },
             { Id: 3, Task: "Run unit testing", Done: true }
         ]
     }
 
-    getInitialToDos() {
-        return this.initialToDos;
+    getInitialTodos() {
+        return this.initialTodos;
     }
 
     getVisibleTodos(todos, showDone) {

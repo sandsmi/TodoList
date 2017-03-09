@@ -15,7 +15,7 @@ class TodoList extends React.Component {
   }
 
   componentDidMount() {
-    let initialTodos = this.todoListHelper.getInitialToDos();
+    let initialTodos = this.todoListHelper.getInitialTodos();
     this.setState({ todos: initialTodos, visible: initialTodos, showDone: true });
   }
 
@@ -40,7 +40,7 @@ class TodoList extends React.Component {
 
   toggleVisible() {
     const showDone = !this.state.showDone;
-    let todos = this.todoListHelper.getVisibleTodos(this.state.toDos, showDone);
+    let todos = this.todoListHelper.getVisibleTodos(this.state.todos, showDone);
     this.setState({ showDone: showDone, visible: todos });
   }
 
