@@ -9,6 +9,8 @@ class TodoList extends React.Component {
     this.state = { todos: [], visible: [], showDone: true };
     this.handleChange = this.handleChange.bind(this);
     this.toggleVisible = this.toggleVisible.bind(this);
+    this.sortByName = this.sortByName.bind(this);
+    this.sortByStatus = this.sortByStatus.bind(this);
     this.todoListHelper = new TodoListHelper();
   }
 
@@ -42,6 +44,16 @@ class TodoList extends React.Component {
     this.setState({ showDone: showDone, visible: todos });
   }
 
+  sortByName() {
+    let sortedTodos = this.todoListHelper.sortByName(this.state.todos);
+    this.setState({ visible: sortedTodos });
+  }
+
+  sortByStatus() {
+    let sortedTodos = this.todoListHelper.sortByStatus(this.state.todos);
+    this.setState({ visible: sortedTodos });
+  }
+
   render() {
     return (
       <div>
@@ -49,6 +61,7 @@ class TodoList extends React.Component {
           <p>Add TODO</p>
           <p onClick={this.toggleVisible}>Hide Done</p>
           <p onClick={this.sortByName}>SORT BY NAME</p>
+          <p onClick={this.sortByStatus}>SORT BY STATUS</p>
         </div>
         <div className="todo-list">
           <ul>
@@ -68,4 +81,4 @@ class TodoList extends React.Component {
   }
 }
 
-export default ToDoList;
+export default TodoList;
