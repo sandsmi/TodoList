@@ -113,7 +113,7 @@ class TodoList extends React.Component {
             }
           </ul>
           <p className="faded">Click a TODO to edit it</p>
-          <AddTodoModal className="todo-modal" onClose={this.closeModal} onAdd={this.addElement} showModal={this.state.modalIsOpen} />
+          <AddTodoModal onClose={this.closeModal} onAdd={this.addElement} showModal={this.state.modalIsOpen} />
         </div>
       </div>
     );
