@@ -1,6 +1,7 @@
 ul {
     list-style-type: none;
     padding: 0;
+    margin: 0;
 }
 
 li {
@@ -8,6 +9,10 @@ li {
     border: 1px solid #F2F2F2;
     margin: 5px;
     padding: 5px;
+}
+
+.list-container {
+    margin: 10px;
 }
 
 .checkbox-round {
@@ -18,7 +23,6 @@ li {
     vertical-align: middle;
     border: 2px solid gray;
     -webkit-appearance: none;
-    outline: white;
     cursor: pointer;
 }
 
@@ -31,6 +35,12 @@ li {
 }
 
 .delete-btn {
+    border: 0;
+    background-color: white;
+    box-shadow: none;
+    border-radius: 0px;
+    cursor: pointer;
+    outline: none;
 }
 
 .todo-list {
@@ -43,8 +53,7 @@ li {
 .sidebar {
     display: inline-block;
     vertical-align: top;
-    width: 150px;
-    height: 100%;
+    width: 120px;
 }
 
 .sidebar-item {
@@ -57,4 +66,9 @@ li {
 
 .pull-right {
     float: right;
+}
+
+.faded {
+    opacity: 0.5;
+    margin-left: 10px;
 }

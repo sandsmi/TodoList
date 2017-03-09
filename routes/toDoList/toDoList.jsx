@@ -1,6 +1,7 @@
 import React from 'react';
 import { TodoListHelper } from './todoListHelper';
 import InlineEdit from 'react-edit-inline';
+import FaTrash from 'react-icons/lib/fa/trash';
 var update = require('react-addons-update');
 
 class TodoList extends React.Component {
@@ -56,7 +57,7 @@ class TodoList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="list-container">
         <div className="sidebar">
           <div className="sidebar-item">
             <span className="sidebar-option">ADD TODO</span>
@@ -83,13 +84,13 @@ class TodoList extends React.Component {
                     />
                   <div className="pull-right">
                     <input id={index} name="Done" type="checkbox" className="checkbox-round" checked={item.Done} onChange={this.handleChange}></input>
-                    <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}>delete</button>
+                    <button className="delete-btn" onClick={this.deleteElement.bind(this, index)}><FaTrash /></button>
                   </div>
                 </li>
               )
             }
           </ul>
-          <p>Click a TODO to edit it</p>
+          <p className="faded">Click a TODO to edit it</p>
         </div>
       </div>
     );

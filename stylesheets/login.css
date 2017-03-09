@@ -21,7 +21,7 @@ body {
     border-bottom: 2px solid #00CCCC;
 }
 
-button {
+.login-button {
     border: 0;
     background-color: #EBEBEB;
     color: #00CCCC;
