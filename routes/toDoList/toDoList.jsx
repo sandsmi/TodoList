@@ -2,19 +2,19 @@ import React from 'react';
 import { TodoListHelper } from './todoListHelper';
 var update = require('react-addons-update');
 
-class ToDoList extends React.Component {
+class TodoList extends React.Component {
 
   constructor() {
     super();
-    this.state = { toDos: [], visible: [], showDone: true };
+    this.state = { todos: [], visible: [], showDone: true };
     this.handleChange = this.handleChange.bind(this);
     this.toggleVisible = this.toggleVisible.bind(this);
     this.todoListHelper = new TodoListHelper();
   }
 
   componentDidMount() {
-    let toDos = this.todoListHelper.getInitialToDos();
-    this.setState({ toDos: toDos, visible: toDos, showDone: true });
+    let initialTodos = this.todoListHelper.getInitialToDos();
+    this.setState({ todos: initialTodos, visible: initialTodos, showDone: true });
   }
 
   handleChange(event) {
@@ -22,7 +22,7 @@ class ToDoList extends React.Component {
     const property = target.name;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     this.setState({
-      toDos: update(this.state.toDos, { 1: { [property]: { $set: value } } })
+      todos: update(this.state.todos, { 1: { [property]: { $set: value } } })
     });
   }
 
